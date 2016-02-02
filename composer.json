@@ -1,0 +1,25 @@
+{
+    "name": "commonhelp/cppress-robotic",
+    "type": "wp-theme",
+    "description": "Wordpress Theme Robotic",
+    "keywords": ["wordpress","theme", "frontend"],
+    "homepage": "https://github.com/marcoski/cppress-robotic",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marco 'Marcoski' Trognoni",
+            "email": "mtrognon@commonhelp.it",
+            "homepage": "http://www.commonhelp.it",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+    	"psr-4": {
+    		"CpPressRobotic\\": "src/CpPressRobotic"
+    	}
+    },
+    "minimum-stability": "dev",
+    "require": {
+     	"php": ">=5.4"
+    }
+}
