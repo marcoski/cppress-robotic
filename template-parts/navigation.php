@@ -22,7 +22,7 @@ $menu_args = array(
 NavMenuFilter::add();
 
 ?>
-<nav class="navbar navbar-robotic navbar-static-top">
+<nav class="navbar navbar-robotic large navbar-static-top">
   <div class="container">
       <header class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

@@ -62,9 +62,16 @@ class WidgetsFilter extends Filter{
 			return self::$instance->postContentWrap($before, $post, $title, true, $thumb);
 		}, 10, 4);
 		
-		self::$instance->register('cppress_widget_post_content_after', function($after, $post, $title){
-			return self::$instance->postContentWrap($after, $post, $title, false);
-		}, 10, 3);
+		self::$instance->register('cppress_widget_post_content_after', function($after, $post, $title, $thumb){
+			return self::$instance->postContentWrap($after, $post, $title, false, $thumb);
+		}, 10, 4);
+		
+		self::$instance->register('cppress_widget_loop_item_classes', function($classes, $title){
+			if(strtolower($title) == 'news'){
+				$classes[] = 'news-margin';
+			}
+			return $classes;
+		}, 10, 2);
 		
 		self::$instance->execAll();
 	}
@@ -101,7 +108,7 @@ class WidgetsFilter extends Filter{
 		return $content;
 	}
 	
-	public function postContentWrap($content, $post, $title, $isBefore, $thumb=false){
+	public function postContentWrap($content, $post, $title, $isBefore, $thumb){
 		if((strtolower($title) == 'news' && $thumb !== '')){
 			if($isBefore){
 				return '<div class="col-lg-6">' . $thumb .'</div><div class="col-lg-6">';
@@ -110,10 +117,12 @@ class WidgetsFilter extends Filter{
 			}
 		}
 		
-		if(strtolower($title) == 'blog' && $isBefore){
-			return '<div class="col-lg-6">' . $thumb .'</div><div class="col-lg-6">';
-		}else if(strtolower($title) == 'blog' && $isBefore){
-			return '</div>';
+		if(strtolower($title) == 'blog'){
+			if($isBefore){
+				return '<div class="col-lg-6">' . $thumb .'</div><div class="col-lg-6">';
+			}else{
+				return '</div>';
+			}
 		}
 		
 		return $content;
